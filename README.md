@@ -1,4 +1,4 @@
-# super_store
+# Super Store
 
 Ecommerce App - fetch data from Rest Api.
 

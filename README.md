@@ -10,11 +10,15 @@ Ecommerce App - fetch data from Rest Api.
 
 #### 1. Copy or Download code in your system 
 
-'git clone https://github.com/om-chauhan/Super-Store-Ecommerce-App-using-REST-Api-in-Flutter.git'
+```
+git clone https://github.com/om-chauhan/Super-Store-Ecommerce-App-using-REST-Api-in-Flutter.git 
+```
 
 #### 2. Run Flutter App
 
-'flutter run'
+```
+flutter run
+```
 
 ## Screenshot
 

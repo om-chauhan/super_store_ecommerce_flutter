@@ -37,6 +37,7 @@ flutter:
 
   assets:
     - images/rupee-indian.png
+    - images/face_image.jpg
 
 
   # example:

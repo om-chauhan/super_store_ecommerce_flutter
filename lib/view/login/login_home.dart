@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import 'package:super_store/components/app_name.dart';
+import 'package:super_store/view/appbar/app_name.dart';
 import 'package:super_store/view/home/home.dart';
 
 class LoginHome extends StatefulWidget {
@@ -15,6 +15,23 @@ class _LoginHomeState extends State<LoginHome> {
   final TextEditingController _emailController = TextEditingController();
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final TextEditingController _passwordController = TextEditingController();
+
+  logedUser() {
+    FirebaseAuth.instance.authStateChanges().listen((User user) {
+      if (user == null) {
+        print('User is currently signed out!');
+      } else {
+        print('User is signed in!');
+      }
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    logedUser();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -227,6 +244,7 @@ class _LoginHomeState extends State<LoginHome> {
           const SnackBar(content: Text('Sucessful Login')),
         );
       }
+
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (_) {
@@ -245,7 +263,4 @@ class _LoginHomeState extends State<LoginHome> {
       );
     }
   }
-
-//Failed to sign in with Email & Password
-
 }

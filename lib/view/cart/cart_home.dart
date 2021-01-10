@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:super_store/components/app_name.dart';
+import 'package:super_store/view/appbar/app_name.dart';
 import 'package:super_store/config/constraints.dart';
 import 'package:super_store/model/cart_model.dart';
 import 'package:super_store/view/cart/cart_item_tile.dart';

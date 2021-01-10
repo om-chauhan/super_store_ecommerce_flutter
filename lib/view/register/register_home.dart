@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import 'package:super_store/components/app_name.dart';
+import 'package:super_store/view/appbar/app_name.dart';
 import 'package:super_store/view/home/home.dart';
 
 class RegisterHome extends StatefulWidget {
@@ -16,7 +16,6 @@ class _RegisterHomeState extends State<RegisterHome> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  bool _isSuccess;
   @override
   void dispose() {
     _emailController.dispose();
@@ -234,8 +233,6 @@ class _RegisterHomeState extends State<RegisterHome> {
           ),
         ),
       );
-    } else {
-      _isSuccess = false;
-    }
+    } else {}
   }
 }

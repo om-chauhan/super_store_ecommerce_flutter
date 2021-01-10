@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:super_store/controller/grid_data.dart';
+import 'package:super_store/view/home/grid_data.dart';
 import 'package:super_store/view/home/home.dart';
 
 class HomeData extends StatelessWidget {

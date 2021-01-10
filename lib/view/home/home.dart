@@ -4,12 +4,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-import 'package:super_store/components/app_name.dart';
+import 'package:super_store/view/appbar/app_name.dart';
 import 'package:super_store/config/constraints.dart';
 
 import 'package:super_store/view/home/home_data.dart';
 import 'package:super_store/view/login/login_home.dart';
-import 'package:super_store/view/menu/drawer_listtile.dart';
+import 'package:super_store/view/menu/drawer_menu.dart';
 
 class Home extends StatefulWidget {
   final User user;
@@ -80,9 +80,7 @@ class _HomeState extends State<Home> {
           ],
           title: AppName(),
         ),
-        drawer: Drawer(
-          child: DrawerListTile(),
-        ),
+        drawer: DrawerMenu(),
         body: HomeData(),
       ),
     );

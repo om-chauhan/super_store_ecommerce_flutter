@@ -50,7 +50,7 @@ class _GridDataState extends State<GridData> {
                 children: [
                   Center(
                     child: Image.network(
-                      'https://images.pexels.com/photos/4210373/pexels-photo-4210373.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260',
+                      listResponse[index]['Image'],
                       height: 70.0,
                       width: MediaQuery.of(context).size.width,
                       fit: BoxFit.cover,

@@ -17,8 +17,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await Firebase.initializeApp();
-  // SharedPreferences prefs = await SharedPreferences.getInstance();
-  // var email = prefs.getString('email');
+
   runApp(
     MultiProvider(
       providers: [ChangeNotifierProvider.value(value: CartItems())],

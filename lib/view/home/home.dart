@@ -27,7 +27,7 @@ class _HomeState extends State<Home> {
 
   Future fetchProducts() async {
     final String url =
-        'https://gist.githubusercontent.com/om-chauhan/558cd77098d43100e8963072c0c213cd/raw/0317ee266e2e99d32931ce0efcf65e89535b0ec0/productlist.json';
+        'https://raw.githubusercontent.com/om-chauhan/dummy-data/main/super-store-product.json';
     final response = await http.get(url);
 
     if (response.statusCode == 200) {
@@ -60,8 +60,6 @@ class _HomeState extends State<Home> {
           actions: [
             InkWell(
               onTap: () {
-                // SharedPreferences prefs = await SharedPreferences.getInstance();
-                // prefs.remove('email');
                 signOut().whenComplete(() {
                   Navigator.of(context).pushReplacement(
                     MaterialPageRoute(

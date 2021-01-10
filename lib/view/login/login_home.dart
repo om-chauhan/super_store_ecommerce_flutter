@@ -199,10 +199,6 @@ class _LoginHomeState extends State<LoginHome> {
                     Text("Don't have an account? "),
                     InkWell(
                       onTap: () {
-                        // //after the login REST api call && response code ==200
-                        // SharedPreferences prefs =
-                        //     await SharedPreferences.getInstance();
-                        // prefs.setString('email', 'useremail@gmail.com');
                         Navigator.pushNamed(context, '/SignUp');
                       },
                       child: Text(

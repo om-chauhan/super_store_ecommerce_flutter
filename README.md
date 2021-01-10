@@ -6,6 +6,17 @@ Ecommerce App - fetch data from Rest Api.
 
 - [Demo App](https://flutter.dev/docs/get-started/codelab)
 
+#### Demo login
+
+##### Email or Username
+```
+test@gmail.com
+```
+##### Password
+```
+12345678
+```
+
 ## Getting Started
 
 #### 1. Copy or Download code in your system 

@@ -4,7 +4,7 @@ Ecommerce App - fetch data from Rest Api.
 
 ## Demo App
 
-- [Demo App](https://flutter.dev/docs/get-started/codelab)
+- [Demo App](https://github.com/om-chauhan/Super-Store-Ecommerce-App-using-REST-Api-in-Flutter/releases/download/v1.0/app-debug.apk)
 
 #### Demo login
 

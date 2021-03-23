@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:super_store/view/appbar/app_name.dart';
 import 'package:super_store/config/constraints.dart';
@@ -29,11 +30,7 @@ class _CartHomeState extends State<CartHome> {
             InkWell(
               onTap: () {
                 signOut().whenComplete(() {
-                  Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(
-                      builder: (context) => LoginHome(),
-                    ),
-                  );
+                  Get.off(LoginHome());
                 });
               },
               child: Padding(

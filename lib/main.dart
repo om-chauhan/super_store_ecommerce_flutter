@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
 import 'package:super_store/model/cart_model.dart';
@@ -53,29 +54,12 @@ class _SplashState extends State<Splash> {
       }
     });
     Future.delayed(Duration(seconds: 3), () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => LoginHome(),
-        ),
-      );
+      Get.to(() => LoginHome());
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    // checkUserAlreadyLogin().then((isLogin) {
-    //   if (isLogin == true) {
-    //     print('Already Login');
-    //     Navigator.push(
-    //         context, MaterialPageRoute(builder: (context) => Home()));
-    //   } else {
-    //     print('Not Login');
-    //     Navigator.push(
-    //         context, MaterialPageRoute(builder: (context) => LoginHome()));
-    //   }
-    // });
-
     return SafeArea(
         child: Scaffold(
       body: Center(
@@ -101,12 +85,4 @@ class _SplashState extends State<Splash> {
       ),
     ));
   }
-
-  // checkUserAlreadyLogin() async {
-  //   FirebaseAuth _auth = FirebaseAuth.instance;
-  //   return _auth
-  //       .currentUser()
-  //       .then((user) => user != null ? true : false)
-  //       .catchError((onError) => false);
-  // }
 }

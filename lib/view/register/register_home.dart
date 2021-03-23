@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:super_store/view/appbar/app_name.dart';
 import 'package:super_store/view/home/home.dart';
@@ -189,7 +190,7 @@ class _RegisterHomeState extends State<RegisterHome> {
                     Text("Have have an account? "),
                     InkWell(
                       onTap: () {
-                        Navigator.pushNamed(context, '/LogIn');
+                        Get.toNamed('/LogIn');
                       },
                       child: Text(
                         'Sign In',
@@ -226,13 +227,9 @@ class _RegisterHomeState extends State<RegisterHome> {
       }
       await user.updateProfile(displayName: _displayName.text);
       final user1 = _auth.currentUser;
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (context) => Home(
-            user: user1,
-          ),
-        ),
-      );
+      Get.off(Home(
+        user: user1,
+      ));
     } else {}
   }
 }

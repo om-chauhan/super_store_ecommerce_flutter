@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:super_store/view/appbar/app_name.dart';
 import 'package:super_store/view/home/home.dart';
@@ -18,11 +19,9 @@ class _LoginHomeState extends State<LoginHome> {
 
   logedUser() {
     FirebaseAuth.instance.authStateChanges().listen((User user) {
-      if (user == null) {
-        print('User is currently signed out!');
-      } else {
-        print('User is signed in!');
-      }
+      user == null
+          ? print('User is currently signed out!')
+          : print('User is signed in!');
     });
   }
 
@@ -47,9 +46,7 @@ class _LoginHomeState extends State<LoginHome> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     AppName(),
-                    SizedBox(
-                      height: 30.0,
-                    ),
+                    SizedBox(height: 30.0),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -60,9 +57,7 @@ class _LoginHomeState extends State<LoginHome> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        SizedBox(
-                          height: 10.0,
-                        ),
+                        SizedBox(height: 10.0),
                         Text(
                           'Please sign in to continue.',
                           style: TextStyle(
@@ -72,9 +67,7 @@ class _LoginHomeState extends State<LoginHome> {
                         ),
                       ],
                     ),
-                    SizedBox(
-                      height: 20.0,
-                    ),
+                    SizedBox(height: 20.0),
                     Form(
                       key: _formKey,
                       child: Column(
@@ -94,9 +87,7 @@ class _LoginHomeState extends State<LoginHome> {
                               return null;
                             },
                           ),
-                          SizedBox(
-                            height: 20.0,
-                          ),
+                          SizedBox(height: 20.0),
                           Column(
                             children: [
                               TextFormField(
@@ -116,9 +107,7 @@ class _LoginHomeState extends State<LoginHome> {
                                   return null;
                                 },
                               ),
-                              SizedBox(
-                                height: 10.0,
-                              ),
+                              SizedBox(height: 10.0),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
@@ -135,9 +124,7 @@ class _LoginHomeState extends State<LoginHome> {
                         ],
                       ),
                     ),
-                    SizedBox(
-                      height: 30.0,
-                    ),
+                    SizedBox(height: 30.0),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
@@ -190,9 +177,7 @@ class _LoginHomeState extends State<LoginHome> {
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: 50.0,
-                ),
+                SizedBox(height: 50.0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -241,15 +226,9 @@ class _LoginHomeState extends State<LoginHome> {
         );
       }
 
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (_) {
-            return Home(
-              user: user,
-            );
-          },
-        ),
-      );
+      Get.off(Home(
+        user: user,
+      ));
     } catch (e) {
       final ScaffoldMessengerState loginErrordMsg =
           ScaffoldMessenger.of(context);

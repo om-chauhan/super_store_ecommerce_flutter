@@ -1,6 +1,6 @@
 # Super Store
 
-Ecommerce App - fetch data from Rest Api.
+Ecommerce App - fetch data from Rest Api (Demo Purpose).
 
 ## Demo App
 
@@ -25,7 +25,12 @@ test@gmail.com
 git clone https://github.com/om-chauhan/Super-Store-Ecommerce-App-using-REST-Api-in-Flutter.git 
 ```
 
-#### 2. Run Flutter App
+#### 2. Got to Inside project Directory
+
+```
+cd Super-Store-Ecommerce-App-using-REST-Api-in-Flutter
+```
+#### 3. Run Flutter App
 
 ```
 flutter run

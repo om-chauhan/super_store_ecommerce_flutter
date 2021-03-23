@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:super_store/view/appbar/app_name.dart';
@@ -61,11 +62,7 @@ class _HomeState extends State<Home> {
             InkWell(
               onTap: () {
                 signOut().whenComplete(() {
-                  Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(
-                      builder: (context) => LoginHome(),
-                    ),
-                  );
+                  Get.off(LoginHome());
                 });
               },
               child: Padding(

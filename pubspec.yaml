@@ -1,31 +1,28 @@
 name: super_store
-description: Ecommerce App fetch data from Rest API.
+description: E-Commerce App fetch data from Rest API.
 
 
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: '>=2.18.0 <3.0.0'
 
 
 dependencies:
   flutter:
     sdk: flutter
   http: any
-  provider: ^4.3.2+3
-  firebase_auth: ^0.18.4+1
-  firebase_core: ^0.5.3
-  url_launcher: ^5.7.10
-
-  get: ^3.26.0
+  provider: ^6.0.4
+  url_launcher: ^6.1.6
+  google_fonts: ^3.0.1
+  device_preview: ^1.1.0
   
 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
   integration_test:
     sdk: flutter
 
@@ -34,7 +31,6 @@ dev_dependencies:
 flutter:
 
   uses-material-design: true
-
   assets:
     - images/rupee-indian.png
     - images/face_image.jpg

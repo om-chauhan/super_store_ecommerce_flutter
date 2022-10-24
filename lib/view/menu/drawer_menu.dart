@@ -1,16 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:super_store/view/appbar/app_name.dart';
-import 'package:super_store/view/appbar/small_app_icon.dart';
+// ignore_for_file: deprecated_member_use
 
-import 'package:super_store/view/cart/cart_home.dart';
-import 'package:super_store/view/home/home.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:super_store/imports.dart';
 
 class DrawerMenu extends StatefulWidget {
-  const DrawerMenu({
-    Key key,
-  }) : super(key: key);
+  const DrawerMenu({Key? key}) : super(key: key);
 
   @override
   _DrawerMenuState createState() => _DrawerMenuState();
@@ -20,138 +13,96 @@ class _DrawerMenuState extends State<DrawerMenu> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: ListView(
+      child: Column(
         children: [
-          Container(
-            height: 170.0,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+          Expanded(
+            child: Column(
               children: [
                 Container(
-                  height: 100.0,
-                  width: 100.0,
-                  decoration: BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(40.0),
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                          blurRadius: 5.0,
-                          color: Colors.black,
-                          offset: Offset(5.0, 5.0),
-                        ),
-                      ]),
-                  child: CircleAvatar(
-                    backgroundImage: AssetImage('images/face_image.jpg'),
-                    backgroundColor: Colors.yellow,
-                  ),
-                ),
-                Container(
-                  height: 70.0,
-                  width: 15.0,
-                ),
-                Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  height: 170.0,
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                        'Omprakash',
-                        style: TextStyle(
-                            fontSize: 30.0, fontWeight: FontWeight.bold),
+                      Container(
+                        height: 100.0,
+                        width: 100.0,
+                        decoration: BoxDecoration(shape: BoxShape.circle),
+                        child: CircleAvatar(
+                          backgroundImage: AssetImage('images/face_image.jpg'),
+                          backgroundColor: Colors.yellow,
+                        ),
                       ),
-                      Text(
-                        'krissh1209@gmail.com',
-                        style: TextStyle(
-                            fontSize: 15.0, fontWeight: FontWeight.normal),
-                      ),
-                    ]),
-              ],
-            ),
-          ),
-          SizedBox(height: 10.0),
-          Container(
-            height: 400,
-            child: ListView(
-              children: [
-                InkWell(
-                  onTap: () {
-                    Get.to(() => Home());
-                  },
-                  child: ListTile(
-                    leading: Icon(Icons.home),
-                    title: Text(
-                      "Home",
-                      style: TextStyle(
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                      const SizedBox(width: 15.0),
+                      Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            TextBuilder(text: 'John Doe', fontSize: 30.0, fontWeight: FontWeight.bold),
+                            TextBuilder(text: 'john@gmail.com', fontSize: 15.0, fontWeight: FontWeight.normal),
+                          ]),
+                    ],
                   ),
                 ),
-                InkWell(
-                  onTap: () {
-                    Get.to(() => CartHome());
-                  },
-                  child: ListTile(
-                    leading: Icon(Icons.shopping_bag),
-                    title: Text(
-                      "Cart",
-                      style: TextStyle(
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.bold,
+                const SizedBox(height: 10.0),
+                Container(
+                  height: 400,
+                  child: ListView(
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (_) => Home()));
+                        },
+                        child: ListTile(
+                          leading: Icon(Icons.home, color: Colors.black),
+                          title: TextBuilder(
+                              text: "Home", fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.black),
+                        ),
                       ),
-                    ),
-                  ),
-                ),
-                InkWell(
-                  onTap: () {
-                    _launchURL();
-                  },
-                  child: ListTile(
-                    leading: Icon(Icons.code),
-                    title: Text(
-                      "Source code",
-                      style: TextStyle(
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.bold,
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (_) => Cart()));
+                        },
+                        child: ListTile(
+                          leading: Icon(
+                            Icons.shopping_bag,
+                            color: Colors.black,
+                          ),
+                          title: TextBuilder(
+                              text: "Cart", fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.black),
+                        ),
                       ),
-                    ),
-                  ),
-                ),
-                InkWell(
-                  onTap: () {
-                    _createEmail();
-                  },
-                  child: ListTile(
-                    leading: Icon(Icons.email),
-                    title: Text(
-                      "Contact",
-                      style: TextStyle(
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.bold,
+                      InkWell(
+                        onTap: _launchURL,
+                        child: ListTile(
+                          leading: Icon(Icons.code, color: Colors.black),
+                          title: TextBuilder(
+                              text: "Source code", fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.black),
+                        ),
                       ),
-                    ),
-                  ),
-                ),
-                InkWell(
-                  onTap: () {
-                    showAboutDialog(
-                      context: context,
-                      applicationIcon: SmallAppIcon(),
-                      applicationVersion: '1.0.0+1',
-                      applicationLegalese: 'Show me',
-                    );
-                  },
-                  child: ListTile(
-                    leading: Icon(Icons.info),
-                    title: Text(
-                      "About App",
-                      style: TextStyle(
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.bold,
+                      InkWell(
+                        onTap: _createEmail,
+                        child: ListTile(
+                          leading: Icon(Icons.email, color: Colors.black),
+                          title: TextBuilder(
+                              text: "Contact", fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.black),
+                        ),
                       ),
-                    ),
+                      InkWell(
+                        onTap: () {
+                          showAboutDialog(
+                            context: context,
+                            applicationIcon: SmallAppIcon(),
+                            applicationVersion: '1.0.0+1',
+                            applicationLegalese: 'Show me',
+                          );
+                        },
+                        child: ListTile(
+                          leading: Icon(Icons.info, color: Colors.black),
+                          title: TextBuilder(
+                              text: "About App", fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.black),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
@@ -163,7 +114,7 @@ class _DrawerMenuState extends State<DrawerMenu> {
             child: Column(
               children: [
                 AppName(),
-                Text('Ecommerce App using Rest Api.'),
+                TextBuilder(text: 'E-commerce App using Rest Api.'),
               ],
             ),
           ),
@@ -173,17 +124,12 @@ class _DrawerMenuState extends State<DrawerMenu> {
   }
 
   _launchURL() async {
-    const url =
-        "https://github.com/om-chauhan/Super-Store-Ecommerce-App-using-REST-Api-in-Flutter";
-
+    const url = "https://github.com/om-chauhan/Super-Store-Ecommerce-App-using-REST-Api-in-Flutter";
     await canLaunch(url) ? await launch(url) : throw 'Could not launch $url';
   }
 
   _createEmail() async {
-    const emailaddress =
-        'mailto:krissh1209@gmail.com?subject=Can we Talk?&body=I have Job offer for you.';
-    await canLaunch(emailaddress)
-        ? await launch(emailaddress)
-        : throw 'Could not launch $emailaddress';
+    const emailAddress = 'mailto:adbytee@gmail.com?subject=Can we Talk?&body=I have Job offer for you.';
+    await canLaunch(emailAddress) ? await launch(emailAddress) : throw 'Could not launch $emailAddress';
   }
 }

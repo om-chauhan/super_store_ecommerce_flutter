@@ -1,15 +1,19 @@
-import 'package:flutter/material.dart';
+import 'package:super_store/imports.dart';
 
 class CartModel {
-  final String id;
-  final String name;
-  final int quantity;
-  final String price;
+  final String? id;
+  final String? name;
+  final int? quantity;
+  final dynamic price;
+  final String? category;
+  final String? image;
   CartModel({
     @required this.id,
     @required this.name,
     @required this.quantity,
     @required this.price,
+    @required this.category,
+    @required this.image,
   });
 }
 
@@ -24,23 +28,30 @@ class CartItems with ChangeNotifier {
     return _items.length;
   }
 
-  void addItem(String productId, String name, int price) {
+  void addItem(String productId, String name, dynamic price, String image, String category) {
     if (_items.containsKey(productId)) {
       _items.update(
-          productId,
-          (existingCartItem) => CartModel(
-              id: DateTime.now().toString(),
-              name: existingCartItem.name,
-              quantity: existingCartItem.quantity + 1,
-              price: existingCartItem.price.toString()));
+        productId,
+        (existingCartItem) => CartModel(
+          id: DateTime.now().toString(),
+          name: existingCartItem.name,
+          quantity: existingCartItem.quantity! + 1,
+          price: existingCartItem.price,
+          category: existingCartItem.category,
+          image: existingCartItem.image,
+        ),
+      );
     } else {
       _items.putIfAbsent(
           productId,
           () => CartModel(
-              id: DateTime.now().toString(),
-              name: name,
-              quantity: 1,
-              price: price.toString()));
+                id: DateTime.now().toString(),
+                name: name,
+                quantity: 1,
+                price: price,
+                category: category,
+                image: image,
+              ));
     }
     notifyListeners();
   }
@@ -54,14 +65,17 @@ class CartItems with ChangeNotifier {
     if (_items.containsKey(id)) {
       return;
     }
-    if (_items[id].quantity > 1) {
+    if (_items[id]!.quantity! > 1) {
       _items.update(
           id,
           (existingCartItem) => CartModel(
-              id: DateTime.now().toString(),
-              name: existingCartItem.name,
-              quantity: existingCartItem.quantity + 1,
-              price: existingCartItem.price));
+                id: DateTime.now().toString(),
+                name: existingCartItem.name,
+                quantity: existingCartItem.quantity! + 1,
+                price: existingCartItem.price,
+                category: existingCartItem.category,
+                image: existingCartItem.image,
+              ));
     }
     notifyListeners();
   }

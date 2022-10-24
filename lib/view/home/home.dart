@@ -1,51 +1,33 @@
-import 'dart:convert';
-
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-
-import 'package:super_store/view/appbar/app_name.dart';
-import 'package:super_store/config/constraints.dart';
-
-import 'package:super_store/view/home/home_data.dart';
-import 'package:super_store/view/login/login_home.dart';
-import 'package:super_store/view/menu/drawer_menu.dart';
+import 'dart:developer' as dev;
+import 'package:super_store/imports.dart';
 
 class Home extends StatefulWidget {
-  final User user;
-
-  const Home({Key key, this.user}) : super(key: key);
+  const Home({Key? key}) : super(key: key);
   @override
   _HomeState createState() => _HomeState();
 }
 
-List listResponse;
-
 class _HomeState extends State<Home> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  FirebaseAuth _auth = FirebaseAuth.instance;
+  Future<List<dynamic>>? futureProduct;
+  Future<List<dynamic>> fetchProducts() async {
+    final baseUrl = 'fakestoreapi.com';
+    final _url = '/products';
+    var res = await http.get(Uri.https(baseUrl, _url));
+    dev.log('Request: ${res.request!.url.toString()}');
 
-  Future fetchProducts() async {
-    final String url =
-        'https://raw.githubusercontent.com/om-chauhan/dummy-data/main/super-store-product.json';
-    final response = await http.get(url);
-
-    if (response.statusCode == 200) {
-      setState(() {
-        listResponse = json.decode(response.body);
-      });
+    var data = jsonDecode(res.body);
+    if (kDebugMode) {
+      dev.log('Response: ${data.toString()}');
     }
-  }
-
-  void logOut() {
-    FirebaseAuth.instance.signOut();
+    return data;
   }
 
   @override
   void initState() {
     super.initState();
-    fetchProducts();
+    futureProduct = fetchProducts();
   }
 
   @override
@@ -54,34 +36,44 @@ class _HomeState extends State<Home> {
       child: Scaffold(
         key: _scaffoldKey,
         appBar: AppBar(
-          iconTheme: IconThemeData(color: Constraints.APP_BAR_MENU_ICON_COLOR),
           elevation: 0.0,
           automaticallyImplyLeading: true,
-          backgroundColor: Constraints.APP_BAR_HOME_BG_COLOR,
-          actions: [
-            InkWell(
-              onTap: () {
-                signOut().whenComplete(() {
-                  Get.off(LoginHome());
-                });
-              },
-              child: Padding(
-                padding: EdgeInsets.all(
-                  10.0,
-                ),
-                child: Icon(Icons.power_settings_new),
-              ),
-            ),
-          ],
+          backgroundColor: Colors.white,
           title: AppName(),
+          actions: [
+            IconButton(
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (_) => Cart()));
+                },
+                icon: Icon(
+                  Icons.shopping_bag,
+                  color: Colors.black,
+                ))
+          ],
         ),
         drawer: DrawerMenu(),
-        body: HomeData(),
+        body: FutureBuilder<List<dynamic>>(
+          future: futureProduct,
+          builder: (context, data) {
+            if (data.hasData) {
+              return GridView.builder(
+                padding: EdgeInsets.all(15),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2, childAspectRatio: 2 / 3, mainAxisSpacing: 15, crossAxisSpacing: 15),
+                itemCount: data.data!.length,
+                shrinkWrap: true,
+                physics: ScrollPhysics(),
+                itemBuilder: (BuildContext context, int i) {
+                  return ProductCardTile(data: data.data![i]);
+                },
+              );
+            } else if (data.hasError) {
+              return Text("${data.error}");
+            }
+            return Center(child: CircularProgressIndicator());
+          },
+        ),
       ),
     );
-  }
-
-  Future signOut() async {
-    await _auth.signOut();
   }
 }

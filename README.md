@@ -37,3 +37,7 @@ flutter run
 | Drawer                            | View Image                                | Added To Cart                                   | Cart                          |
 | --------------------------------- | ----------------------------------------- | ----------------------------------------------- | ----------------------------- |
 | ![Drawer](/screenshot/drawer.jpg) | ![View Image](/screenshot/view-image.jpg) | ![Added to cart](/screenshot/added-to-cart.jpg) | ![Cart](/screenshot/cart.jpg) |
+
+## Licence
+
+[MIT Licence](https://raw.githubusercontent.com/om-chauhan/Super-Store-Ecommerce-App-using-REST-Api-in-Flutter/master/LICENCE)

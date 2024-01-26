@@ -1,87 +1,63 @@
-import 'package:super_store/imports.dart';
-
 class CartModel {
-  final String? id;
-  final String? name;
-  final int? quantity;
-  final dynamic price;
-  final String? category;
-  final String? image;
+  int? id;
+  int? quantity;
+  double? totalPrice;
+  String? title;
+  double? price;
+  String? category;
+  String? image;
+
   CartModel({
-    @required this.id,
-    @required this.name,
-    @required this.quantity,
-    @required this.price,
-    @required this.category,
-    @required this.image,
+    this.id,
+    this.quantity,
+    this.totalPrice,
+    this.title,
+    this.price,
+    this.category,
+    this.image,
   });
-}
 
-class CartItems with ChangeNotifier {
-  Map<String, CartModel> _items = {};
-
-  Map<String, CartModel> get items {
-    return {..._items};
+  CartModel copyWith({
+    int? id,
+    int? quantity,
+    double? totalPrice,
+    String? title,
+    double? price,
+    String? category,
+    String? image,
+  }) {
+    return CartModel(
+      id: id ?? this.id,
+      quantity: quantity ?? this.quantity,
+      totalPrice: totalPrice ?? this.totalPrice,
+      title: title ?? this.title,
+      price: price ?? this.price,
+      category: category ?? this.category,
+      image: image ?? this.image,
+    );
   }
 
-  int get itemCount {
-    return _items.length;
+  factory CartModel.fromJson(Map<String, dynamic> json) {
+    return CartModel(
+      id: json['id'],
+      quantity: json['quantity'],
+      totalPrice: json['totalPrice'],
+      title: json['title'],
+      price: json['price'],
+      category: json['category'],
+      image: json['image'],
+    );
   }
 
-  void addItem(String productId, String name, dynamic price, String image, String category) {
-    if (_items.containsKey(productId)) {
-      _items.update(
-        productId,
-        (existingCartItem) => CartModel(
-          id: DateTime.now().toString(),
-          name: existingCartItem.name,
-          quantity: existingCartItem.quantity! + 1,
-          price: existingCartItem.price,
-          category: existingCartItem.category,
-          image: existingCartItem.image,
-        ),
-      );
-    } else {
-      _items.putIfAbsent(
-          productId,
-          () => CartModel(
-                id: DateTime.now().toString(),
-                name: name,
-                quantity: 1,
-                price: price,
-                category: category,
-                image: image,
-              ));
-    }
-    notifyListeners();
-  }
-
-  void removeItem(String id) {
-    _items.remove(id);
-    notifyListeners();
-  }
-
-  void removeSingleItem(String id) {
-    if (_items.containsKey(id)) {
-      return;
-    }
-    if (_items[id]!.quantity! > 1) {
-      _items.update(
-          id,
-          (existingCartItem) => CartModel(
-                id: DateTime.now().toString(),
-                name: existingCartItem.name,
-                quantity: existingCartItem.quantity! + 1,
-                price: existingCartItem.price,
-                category: existingCartItem.category,
-                image: existingCartItem.image,
-              ));
-    }
-    notifyListeners();
-  }
-
-  void clear() {
-    _items = {};
-    notifyListeners();
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['quantity'] = quantity;
+    data['totalPrice'] = totalPrice;
+    data['title'] = title;
+    data['price'] = price;
+    data['category'] = category;
+    data['image'] = image;
+    return data;
   }
 }

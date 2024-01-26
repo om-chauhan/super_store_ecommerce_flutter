@@ -1,15 +1,8 @@
-import 'package:device_preview/device_preview.dart';
-import 'package:super_store/imports.dart';
+import 'package:super_store_e_commerce_flutter/imports.dart';
 
 Future<void> main() async {
-  runApp(
-    kIsWeb
-        ? DevicePreview(
-            enabled: !kReleaseMode,
-            builder: (context) => MyApp(), // Wrap your app
-          )
-        : MyApp(),
-  );
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -18,17 +11,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [ChangeNotifierProvider.value(value: CartItems())],
+      providers: [
+        ChangeNotifierProvider<CartProvider>(create: (context) => CartProvider()),
+      ],
       child: MaterialApp(
-        title: 'Super Store',
+        title: RawString.appName,
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           scaffoldBackgroundColor: Colors.white,
-          appBarTheme: AppBarTheme(
-            iconTheme: IconThemeData(color: Colors.black),
-          ),
+          useMaterial3: true,
         ),
-        home: Splash(),
+        home: const Splash(),
       ),
     );
   }

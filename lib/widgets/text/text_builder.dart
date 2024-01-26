@@ -1,4 +1,4 @@
-import 'package:super_store/imports.dart';
+import 'package:super_store_e_commerce_flutter/imports.dart';
 
 class TextBuilder extends StatelessWidget {
   final String? text;
@@ -33,7 +33,7 @@ class TextBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text!,
-      style: GoogleFonts.lato(
+      style: GoogleFonts.poppins(
         fontSize: fontSize,
         color: color,
         fontWeight: fontWeight,

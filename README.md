@@ -1,12 +1,13 @@
 <!-- @format -->
 
-# Super Store
+# Super Store - Flutter E-Commerce App
 
-E-Commerce App - fetch data from Rest Api (Demo Purpose).
+Flutter E-Commerce App Fresh Material UI Fully function.
+Provider package used for manage the State of Store and App.
 
 ## Demo App
 
-- [Demo Apk](https://github.com/om-chauhan/Super-Store-Ecommerce-App-using-REST-Api-in-Flutter/releases/download/v1.0/app-release.apk)
+- [Demo Apk](https://github.com/om-chauhan/Super-Store-Ecommerce-App-using-REST-Api-in-Flutter/releases/download/1.0.0%2B1/app-debug.apk)
 
 ## Getting Started
 
@@ -16,13 +17,19 @@ E-Commerce App - fetch data from Rest Api (Demo Purpose).
 git clone https://github.com/om-chauhan/Super-Store-Ecommerce-App-using-REST-Api-in-Flutter.git
 ```
 
-#### 2. Got to Inside project Directory
+#### 2. Rename folder name all name should be small or use underscore (\_) instead of hyphen (-)
 
 ```
-cd Super-Store-E-Commerce-App-using-REST-Api-in-Flutter
+super_store_e_commerce_flutter
 ```
 
-#### 3. Run Flutter App
+#### 3. Got to Inside project Directory
+
+```
+cd super_store_e_commerce_flutter
+```
+
+#### 4. Run Flutter App
 
 ```
 flutter run

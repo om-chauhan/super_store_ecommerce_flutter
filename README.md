@@ -1,41 +1,24 @@
-<!-- @format -->
-
 # Super Store - Flutter E-Commerce App
 
-Flutter E-Commerce App Fresh Material UI Fully function.
-Provider package used for manage the State of Store and App.
+Flutter E-Commerce App Fresh Material UI Fully function. Provider package used for manage the State of Store and App.
 
-## Demo App
+## 🚀 Installation or Run server
 
-- [Demo Apk](https://github.com/om-chauhan/Super-Store-Ecommerce-App-using-REST-Api-in-Flutter/releases/download/1.0.0%2B1/app-debug.apk)
+Install, run the development server:
 
-## Getting Started
-
-#### 1. Copy or Download code in your system
-
+```bash
+1. git clone https://github.com/om-chauhan/super_store_ecommerce_flutter.git
 ```
-git clone https://github.com/om-chauhan/Super-Store-Ecommerce-App-using-REST-Api-in-Flutter.git
+```bash
+2. flutter pub get
 ```
-
-#### 2. Rename folder name all name should be small or use underscore (\_) instead of hyphen (-)
-
-```
-super_store_e_commerce_flutter
+```bash
+3. flutter run
 ```
 
-#### 3. Got to Inside project Directory
 
-```
-cd super_store_e_commerce_flutter
-```
+## 👤 Screenshots
 
-#### 4. Run Flutter App
-
-```
-flutter run
-```
-
-## Screenshot
 
 | Splash                            | Log In                           | Sign Up                             | Home                          |
 | --------------------------------- | -------------------------------- | ----------------------------------- | ----------------------------- |
@@ -44,7 +27,22 @@ flutter run
 | Drawer                            | View Image                                | Added To Cart                                   | Cart                          |
 | --------------------------------- | ----------------------------------------- | ----------------------------------------------- | ----------------------------- |
 | ![Drawer](/screenshot/drawer.jpg) | ![View Image](/screenshot/view-image.jpg) | ![Added to cart](/screenshot/added-to-cart.jpg) | ![Cart](/screenshot/cart.jpg) |
+<!--![App Screenshot](/screenshot/Screenshot_1.png)-->
 
-## Licence
+## 🌐 Live APK
 
-[MIT Licence](https://raw.githubusercontent.com/om-chauhan/Super-Store-Ecommerce-App-using-REST-Api-in-Flutter/master/LICENCE)
+Demp APK [Visit](https://github.com/om-chauhan/Super-Store-Ecommerce-App-using-REST-Api-in-Flutter/releases/download/1.0.0%2B1/app-debug.apk)
+
+## 🔗 Links
+
+- [![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://om-chauhan.co.in)
+- [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/omprakash-chauhan/)
+- [![twitter](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/_Omi_Op)
+
+## 🔑 License
+
+[MIT](/LICENCE)
+
+## 👤 Authors
+
+- [@om-chauhan](https://github.com/om-chauhan)

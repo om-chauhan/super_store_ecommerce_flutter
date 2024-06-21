@@ -75,56 +75,60 @@ class CartCard extends StatelessWidget {
                       color: Colors.white,
                     )),
                 const SizedBox(height: 5),
-                Row(
-                  children: [
-                    Row(
+                Consumer<CartProvider>(
+                  builder: (_,provider,child) {
+                    return Row(
                       children: [
-                        IconButton(
-                            padding: EdgeInsets.zero,
-                            onPressed: () {
-                              provider.decreaseQuantity(cart.id!);
-                            },
-                            icon: const Icon(
-                              Icons.remove_circle_outline,
+                        Row(
+                          children: [
+                            IconButton(
+                                padding: EdgeInsets.zero,
+                                onPressed: () {
+                                  provider.decreaseQuantity(cart.id!);
+                                },
+                                icon: const Icon(
+                                  Icons.remove_circle_outline,
+                                  color: Colors.black,
+                                )),
+                            TextBuilder(
+                              text: cart.quantity.toString(),
                               color: Colors.black,
-                            )),
-                        TextBuilder(
-                          text: cart.quantity.toString(),
-                          color: Colors.black,
-                          fontSize: 20,
-                          fontWeight: FontWeight.w500,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w500,
+                            ),
+                            IconButton(
+                                onPressed: () {
+                                  provider.increaseQuantity(cart.id!);
+                                },
+                                icon: const Icon(
+                                  Icons.add_circle_outline,
+                                  color: Colors.black,
+                                ))
+                          ],
                         ),
-                        IconButton(
-                            onPressed: () {
-                              provider.increaseQuantity(cart.id!);
-                            },
-                            icon: const Icon(
-                              Icons.add_circle_outline,
-                              color: Colors.black,
-                            ))
+                       /* Expanded(
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              const TextBuilder(
+                                text: 'Total: ',
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                                color: Colors.blue,
+                              ),
+                              TextBuilder(
+                                text: " ₹${cart.price!.round()}",
+                                fontWeight: FontWeight.w600,
+                                color: Colors.blue,
+                                fontSize: 18,
+                              ),
+                            ],
+                          ),
+                        )*/
                       ],
-                    ),
-                    Expanded(
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          const TextBuilder(
-                            text: 'Total: ',
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
-                            color: Colors.blue,
-                          ),
-                          TextBuilder(
-                            text: " ₹${cart.price!.round()}",
-                            fontWeight: FontWeight.w600,
-                            color: Colors.blue,
-                            fontSize: 18,
-                          ),
-                        ],
-                      ),
-                    )
-                  ],
+                    );
+                  }
                 ),
               ],
             ),

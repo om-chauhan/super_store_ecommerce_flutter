@@ -15,7 +15,8 @@ class SplashState extends State<Splash> {
   }
 
   getData() {
-    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => const Login()), (route) => false);
+    Navigator.pushAndRemoveUntil(context,
+        MaterialPageRoute(builder: (_) => const Login()), (route) => false);
   }
 
   @override

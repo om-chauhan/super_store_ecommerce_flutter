@@ -23,22 +23,38 @@ class _RegisterState extends State<Register> {
             children: [
               const AppNameWidget(),
               const SizedBox(height: 100),
-              const CustomTextField(labelText: 'Full Name', hintText: 'John Doe', prefixIcon: Icons.person),
+              const CustomTextField(
+                  labelText: 'Full Name',
+                  hintText: 'John Doe',
+                  prefixIcon: Icons.person),
               const SizedBox(height: 20.0),
-              const CustomTextField(labelText: 'Email', hintText: 'example@example.com', prefixIcon: Icons.email),
+              const CustomTextField(
+                  labelText: 'Email',
+                  hintText: 'example@example.com',
+                  prefixIcon: Icons.email),
               const SizedBox(height: 20.0),
-              const CustomTextField(labelText: 'Password', hintText: 'Password', prefixIcon: Icons.lock),
+              const CustomTextField(
+                  labelText: 'Password',
+                  hintText: 'Password',
+                  prefixIcon: Icons.lock),
               const SizedBox(height: 20.0),
-              const CustomTextField(labelText: 'Confirm Password', hintText: 'Confirm Password', prefixIcon: Icons.lock),
+              const CustomTextField(
+                  labelText: 'Confirm Password',
+                  hintText: 'Confirm Password',
+                  prefixIcon: Icons.lock),
               const SizedBox(height: 30.0),
               Center(
                 child: MaterialButton(
                   height: 60,
                   color: Colors.black,
                   minWidth: size.width * 0.8,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12)),
                   onPressed: () {
-                    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => const Login()), (route) => false);
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(builder: (_) => const Login()),
+                        (route) => false);
                   },
                   child: const TextBuilder(
                     text: 'Sign Up',
@@ -58,7 +74,8 @@ class _RegisterState extends State<Register> {
                   ),
                   InkWell(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (_) => const Login()));
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (_) => const Login()));
                     },
                     child: const TextBuilder(
                       text: 'Login',

@@ -13,11 +13,6 @@ class _LoginState extends State<Login> {
   final TextEditingController _passwordController = TextEditingController();
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     // total height and width of screen
     Size size = MediaQuery.sizeOf(context);
@@ -31,9 +26,15 @@ class _LoginState extends State<Login> {
             children: [
               const AppNameWidget(),
               const SizedBox(height: 100),
-              const CustomTextField(labelText: 'Email', hintText: 'example@example.com', prefixIcon: Icons.email),
+              const CustomTextField(
+                  labelText: 'Email',
+                  hintText: 'example@example.com',
+                  prefixIcon: Icons.email),
               const SizedBox(height: 20.0),
-              const CustomTextField(labelText: 'Password', hintText: 'Password', prefixIcon: Icons.lock),
+              const CustomTextField(
+                  labelText: 'Password',
+                  hintText: 'Password',
+                  prefixIcon: Icons.lock),
               Align(
                 alignment: Alignment.centerRight,
                 child: InkWell(
@@ -51,9 +52,13 @@ class _LoginState extends State<Login> {
                   height: 60,
                   color: Colors.black,
                   minWidth: size.width * 0.8,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12)),
                   onPressed: () {
-                    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => const Home()), (route) => false);
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(builder: (_) => const Home()),
+                        (route) => false);
                   },
                   child: const TextBuilder(
                     text: 'Login',
@@ -73,7 +78,8 @@ class _LoginState extends State<Login> {
                   ),
                   InkWell(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (_) => const Register()));
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (_) => const Register()));
                     },
                     child: const TextBuilder(
                       text: 'Sign Up',

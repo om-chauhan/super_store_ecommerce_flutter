@@ -25,7 +25,8 @@ class _CartState extends State<Cart> {
               height: 25,
               width: 25,
               alignment: Alignment.center,
-              decoration: const BoxDecoration(shape: BoxShape.circle, color: Colors.black),
+              decoration: const BoxDecoration(
+                  shape: BoxShape.circle, color: Colors.black),
               child: TextBuilder(
                 text: cart.itemCount.toString(),
                 color: Colors.white,
@@ -56,22 +57,31 @@ class _CartState extends State<Cart> {
           height: 60,
           color: Colors.black,
           minWidth: size.width,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
           onPressed: () {
             final ScaffoldMessengerState buyNow = ScaffoldMessenger.of(context);
             buyNow.showSnackBar(
               SnackBar(
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20)),
                 backgroundColor: Colors.black,
                 behavior: SnackBarBehavior.floating,
-                content: const TextBuilder(text: 'Thank you for shopping with us'),
+                content:
+                    const TextBuilder(text: 'Thank you for shopping with us'),
               ),
             );
           },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              TextBuilder(text: '₹ ${cart.totalPrice()}', color: Colors.white, fontWeight: FontWeight.w600, fontSize: 20),
+              Consumer<CartProvider>(builder: (_, cart, child) {
+                return TextBuilder(
+                    text: '₹ ${cart.totalPrice()}',
+                    color: Colors.white,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 20);
+              }),
               const SizedBox(width: 10.0),
               const TextBuilder(
                 text: 'Pay Now',

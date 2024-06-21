@@ -14,27 +14,36 @@ class _HomeState extends State<Home> {
   Future<List<ProductModel>>? futureProduct;
   Future<List<ProductModel>> fetchProducts() async {
     List<ProductModel> products = [];
-    const baseUrl = 'https://fakestoreapi.com/products';
-    var request = http.Request('GET', Uri.parse(baseUrl));
+   try{
+     const baseUrl = 'https://fakestoreapi.com/products';
+     var request = http.Request('GET', Uri.parse(baseUrl));
 
-    http.StreamedResponse response = await request.send();
-    var responseBody = await response.stream.bytesToString(); // Store the response body
+     http.StreamedResponse response = await request.send();
+     var responseBody =
+     await response.stream.bytesToString(); // Store the response body
 
-    if (response.statusCode == 200) {
-      if (kDebugMode) {
-        print(responseBody);
-      }
-      final jsonData = jsonDecode(responseBody);
-      products = jsonData.map<ProductModel>((e) => ProductModel.fromJson(e)).toList();
-      setState(() {}); // Assuming this is within a Stateful widget
+     if (response.statusCode == 200) {
+       if (kDebugMode) {
+         print(responseBody);
+       }
+       final jsonData = jsonDecode(responseBody);
+       products =
+           jsonData.map<ProductModel>((e) => ProductModel.fromJson(e)).toList();
+       setState(() {}); // Assuming this is within a Stateful widget
 
-      return products;
-    } else {
-      if (kDebugMode) {
-        print(response.reasonPhrase);
-      }
-      return [];
-    }
+       return products;
+     } else {
+       if (kDebugMode) {
+         print(response.reasonPhrase);
+       }
+       return [];
+     }
+   }catch(e){
+     if (kDebugMode) {
+       print("something went wrong!");
+     }
+     return [];
+   }
   }
 
   @override
@@ -55,12 +64,15 @@ class _HomeState extends State<Home> {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (_) => const Cart()));
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (_) => const Cart()));
             },
             icon: Stack(
               children: [
                 Padding(
-                  padding: EdgeInsets.only(top: cart.itemCount != 0 ? 8 : 0, right: cart.itemCount != 0 ? 8 : 0),
+                  padding: EdgeInsets.only(
+                      top: cart.itemCount != 0 ? 8 : 0,
+                      right: cart.itemCount != 0 ? 8 : 0),
                   child: const Icon(
                     Icons.shopping_cart,
                     color: Colors.black,
@@ -75,7 +87,8 @@ class _HomeState extends State<Home> {
                       height: 20,
                       width: 20,
                       alignment: Alignment.center,
-                      decoration: const BoxDecoration(shape: BoxShape.circle, color: Colors.black),
+                      decoration: const BoxDecoration(
+                          shape: BoxShape.circle, color: Colors.black),
                       child: TextBuilder(
                         text: cart.itemCount.toString(),
                         color: Colors.white,

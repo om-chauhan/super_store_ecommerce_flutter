@@ -24,7 +24,7 @@ class _DrawerMenuState extends State<DrawerMenu> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         CircleAvatar(
-                          radius: 35,
+                          radius: 30,
                           backgroundColor: Colors.white,
                           backgroundImage: NetworkImage(RawString.appLogoURL),
                         ),
@@ -33,8 +33,14 @@ class _DrawerMenuState extends State<DrawerMenu> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            TextBuilder(text: RawString.appName, fontSize: 30.0, fontWeight: FontWeight.bold),
-                            TextBuilder(text: RawString.dummyEmail, fontSize: 15.0, fontWeight: FontWeight.normal),
+                            TextBuilder(
+                                text: RawString.appName,
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.bold),
+                            TextBuilder(
+                                text: RawString.dummyEmail,
+                                fontSize: 15.0,
+                                fontWeight: FontWeight.normal),
                           ],
                         ),
                       ],
@@ -46,43 +52,70 @@ class _DrawerMenuState extends State<DrawerMenu> {
                       children: [
                         ListTile(
                           onTap: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (_) => const Home()));
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (_) => const Home()));
                           },
                           leading: const Icon(
                             Icons.home,
                             color: Colors.black,
                             size: 20,
                           ),
-                          title: const TextBuilder(text: "Home", fontSize: 20.0, fontWeight: FontWeight.w600, color: Colors.black),
+                          title: const TextBuilder(
+                              text: "Home",
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.black),
                         ),
                         ListTile(
                           onTap: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (_) => const Cart()));
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (_) => const Cart()));
                           },
                           leading: const Icon(
                             Icons.shopping_bag,
                             color: Colors.black,
                             size: 20,
                           ),
-                          title: const TextBuilder(text: "Cart", fontSize: 20.0, fontWeight: FontWeight.w600, color: Colors.black),
+                          title: const TextBuilder(
+                              text: "Cart",
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.black),
                         ),
                         ListTile(
                           onTap: () {
-                            UrlLaunch.launchInBrowser(urlString: RawString.gitHubRepo);
+                            UrlLaunch.launchInBrowser(
+                                urlString: RawString.gitHubRepo);
                           },
-                          leading: const Icon(Icons.source, color: Colors.black, size: 20),
-                          title: const TextBuilder(text: "Source code", fontSize: 20.0, fontWeight: FontWeight.w600, color: Colors.black),
+                          leading: const Icon(Icons.source,
+                              color: Colors.black, size: 20),
+                          title: const TextBuilder(
+                              text: "Source code",
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.black),
                         ),
                         ListTile(
                           onTap: () {
-                            UrlLaunch.makeEmail(email: RawString.gitHubRepo, body: 'Hello,', subject: 'Can we Talk?');
+                            UrlLaunch.makeEmail(
+                                email: RawString.gitHubRepo,
+                                body: 'Hello,',
+                                subject: 'Can we Talk?');
                           },
                           leading: const Icon(
                             Icons.email,
                             color: Colors.black,
                             size: 20,
                           ),
-                          title: const TextBuilder(text: "Contact", fontSize: 20.0, fontWeight: FontWeight.w600, color: Colors.black),
+                          title: const TextBuilder(
+                              text: "Contact",
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.black),
                         ),
                         InkWell(
                           onTap: () {
@@ -99,7 +132,11 @@ class _DrawerMenuState extends State<DrawerMenu> {
                               color: Colors.black,
                               size: 20,
                             ),
-                            title: TextBuilder(text: "About App", fontSize: 20.0, fontWeight: FontWeight.w600, color: Colors.black),
+                            title: TextBuilder(
+                                text: "About App",
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.black),
                           ),
                         ),
                       ],

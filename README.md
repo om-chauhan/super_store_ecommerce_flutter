@@ -46,3 +46,7 @@ Demp APK [Visit](https://github.com/om-chauhan/Super-Store-Ecommerce-App-using-R
 ## 👤 Authors
 
 - [@om-chauhan](https://github.com/om-chauhan)
+
+## 👤 Contributor
+
+- [@jaygoswami](https://github.goswamijay)

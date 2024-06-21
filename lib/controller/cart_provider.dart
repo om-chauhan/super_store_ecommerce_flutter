@@ -68,7 +68,7 @@ class CartProvider with ChangeNotifier {
     for (int i = 0; i < _items.length; i++) {
       totalPrice += _items[i].totalPrice!;
     }
-    notifyListeners();
+    // notifyListeners();
     if (kDebugMode) {
       print('Total Price: $totalPrice');
     }
